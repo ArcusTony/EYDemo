@@ -1,0 +1,37 @@
+<h2> Site Information </h2>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @site.name %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @site.lat %>
+</p>
+
+<p>
+  <b>Long:</b>
+  <%= @site.long %>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <%= @site.manager %>
+</p>
+
+<p>
+  <b>Plotsmax:</b>
+  <%= @site.plotsMax %>
+</p>
+
+<p>
+  <b>Plotsused:</b>
+  <%= @site.plotsUsed %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

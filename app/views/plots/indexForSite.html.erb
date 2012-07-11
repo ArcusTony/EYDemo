@@ -1,0 +1,43 @@
+<h1>Showing Plots for <%= @introText %></h1>
+
+<p>
+<%= form_tag({:controller => "plots", :action => "indexForSite"}, :method => "get") do %>
+  <%= label_tag "site_name_select", "Select  " %>
+  <%= select_tag "site_name", options_from_collection_for_select(@site_names, :name, :name) %>
+  <%= submit_tag(value=" to view its plots ") %>
+<% end %> 
+or <%= link_to 'all sites', plots_path %> 
+</p>
+
+
+<table>
+  <tr>
+    <th>Site</th>
+    <th>Size</th>
+    <th>Length</th>
+    <th>Width</th>
+    <th>Shed</th>
+    <th>Disabled Access</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @plots.each do |plot| %>
+  <tr>
+    <td><%= plot.site %></td>
+    <td><%= plot.size %></td>
+    <td><%= plot.length %></td>
+    <td><%= plot.width %></td>
+    <td><%= plot.shed %></td>
+    <td><%= plot.disabledAccess %></td>
+    <td><%= link_to 'Show', plot %></td>
+    <td><%= link_to 'Edit', edit_plot_path(plot) %></td>
+    <td><%= link_to 'Destroy', plot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Plot', new_plot_path %>

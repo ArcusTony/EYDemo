@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Site:</b>
+  <%= @plot.site %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @plot.size %>
+</p>
+
+<p>
+  <b>Length:</b>
+  <%= @plot.length %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @plot.width %>
+</p>
+
+<p>
+  <b>Shed:</b>
+  <%= @plot.shed %>
+</p>
+
+<p>
+  <b>Disabled Access:</b>
+  <%= @plot.disabledAccess %>
+</p>
+
+<table>
+<% @tenancies.each do |tenancy| %>
+	<tr>
+    <td><%= tenancy.startDate %></td>
+    <td><%= tenancy.stopDate %></td>
+    <td><%= Customer.where(:id => tenancy.customer_id).first %></td>
+    <td><%= link_to 'Show', Customer.where(:id => tenancy.customer_id).first %> </td>
+	</tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_plot_path(@plot) %> |
+<%= link_to 'Back', plots_path %>
